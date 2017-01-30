@@ -1,0 +1,27 @@
+1. Instale la última versión de RStudio
+
+2. Instale los paquetes incluidos en el fichero
+   !Outliers_A1_Paquetes_a_instalar_una_sola_vez.R
+   Estos paquetes sólo se instalan una vez. Para ello, basta seleccionar
+   el anterior fichero y hacer click sobre la pestaña "Source" de RStudio
+
+3. Cada vez que iniciemos una sesión en R, hay que cargar las librerías incluidas
+   en los paquetes anteriores. Para ello, cargamos en RStudio el fichero
+   !Outliers_A2_Librerias_a_cargar_en_cada_sesion.R
+   Y seleccionamos "Source"
+   Además, también cargaremos las funciones definidas en el fichero:
+   !Outliers_A3_Funciones_a_cargar_en_cada_sesion.R
+   pulsando de nuevo sobre "Source"
+   
+4. Lea los scripts incluidos en los siguientes ficheros y complete las instrucciones
+   que faltan en las líneas en las que aparece "# COMPLETAR"
+
+   !MasterIA_GuionPracticas_Outliers_B1_1Variate_IQR.R
+   !MasterIA_GuionPracticas_Outliers_B2_1Variate_TestsEstadisticos.R
+   !MasterIA_GuionPracticas_Outliers_C1_MultiVariate_Mahalanobis.R
+   !MasterIA_GuionPracticas_Outliers_D1_LOF.R
+   !MasterIA_GuionPracticas_Outliers_D2_ClusterBasedOutliers.R
+
+5. Genere un fichero zip que contenga los ficheros anteriores con las soluciones 
+   propuestas por el alumno y entréguelo a través de la plataforma 
+   en el apartado "Entrega de trabajos de los alumnos"
