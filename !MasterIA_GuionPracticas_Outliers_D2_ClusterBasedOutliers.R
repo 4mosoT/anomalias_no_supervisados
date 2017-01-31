@@ -1,4 +1,4 @@
-# Máster -> Detección de anomalías
+# M?ster -> Detecci?n de anomal?as
 # Juan Carlos Cubero. Universidad de Granada
 
 ###########################################################################
@@ -12,9 +12,9 @@
 # Lectura de valores y Preprocesamiento
 #####################################################################
 
-# Trabajamos sobre las columnas numéricas de iris [1:4]
-# Este conjunto de datos está disponible en R
-# Tanto LOF como clustering usan distancias entre registros, por lo que habrá
+# Trabajamos sobre las columnas num?ricas de iris [1:4]
+# Este conjunto de datos est? disponible en R
+# Tanto LOF como clustering usan distancias entre registros, por lo que habr?
 # que trabajar sobre los datos previamente normalizados
 
 # Construimos los siguiente conjuntos:
@@ -34,13 +34,13 @@ rownames(mis.datos.numericos.normalizados) = rownames(mis.datos.numericos)
 numero.de.outliers   = 5
 numero.de.clusters   = 3
 
-set.seed(2)  # Para establecer la semilla para la primera iteración de kmeans
+set.seed(2)  # Para establecer la semilla para la primera iteraci?n de kmeans
 
 
 ###########################################################################
-# Cómputo de los outliers según la distancia euclídea de cada dato 
+# C?mputo de los outliers seg?n la distancia eucl?dea de cada dato 
 # al centroide de su cluster
-# El centroide podrá ser cualquiera (podrá provenir de un k-means 
+# El centroide podr? ser cualquiera (podr? provenir de un k-means 
 # o ser un medoide, por ejemplo)
 ###########################################################################
 
@@ -50,18 +50,18 @@ set.seed(2)  # Para establecer la semilla para la primera iteración de kmeans
 # k-Means
 
 # Construimos el modelo kmeans (modelo.kmeans) con los datos normalizados. 
-# Para ello, usamos la función de R llamada "kmeans"
+# Para ello, usamos la funci?n de R llamada "kmeans"
 
 # A partir del resultado de kmeans, accedemos a:
 
 # a) $cluster para obtener 
-#   los índices de asignación de cada dato al cluster correspondiente 
+#   los ?ndices de asignaci?n de cada dato al cluster correspondiente 
 #   El resultado lo guardamos en la variable indices.clustering.iris
-#   Por ejemplo, si el dato con índice 69 está asignado al tercer cluster,
-#   en el vector indices.clustering.iris habrá un 3 en la componente número 69
+#   Por ejemplo, si el dato con ?ndice 69 est? asignado al tercer cluster,
+#   en el vector indices.clustering.iris habr? un 3 en la componente n?mero 69
 
 # b) $centers para obtener los datos de los centroides.
-#   Los datos están normalizados por lo que los centroides también lo están.
+#   Los datos est?n normalizados por lo que los centroides tambi?n lo est?n.
 #   El resultado lo guardamos en la variable centroides.normalizados.iris
 
 
@@ -78,13 +78,14 @@ set.seed(2)  # Para establecer la semilla para la primera iteración de kmeans
 
 
 # COMPLETAR
-
-
+modelo <- kmeans(mis.datos.numericos.normalizados, centers = numero.de.clusters )
+modelo$cluster
+modelo$centers
 
 # -------------------------------------------------------------------------
 
-# Calculamos la distancia euclídea de cada dato a su centroide (con los valores normalizados)
-# Para ello, usad la siguiente función:
+# Calculamos la distancia eucl?dea de cada dato a su centroide (con los valores normalizados)
+# Para ello, usad la siguiente funci?n:
 
 distancias_a_centroides = function (datos.normalizados, 
                                     indices.asignacion.clustering, 
@@ -97,8 +98,8 @@ distancias_a_centroides = function (datos.normalizados,
 # 1          2          3             ......
 # 0.21224719 0.99271979 0.64980753    ......
 
-# Ordenamos dichas distancias a través de la función order y obtenemos
-# los índices correspondientes. Nos quedamos con los primeros
+# Ordenamos dichas distancias a trav?s de la funci?n order y obtenemos
+# los ?ndices correspondientes. Nos quedamos con los primeros
 # (tantos como diga la variable numero.de.outliers)
 
 # top.outliers.iris
@@ -107,6 +108,8 @@ distancias_a_centroides = function (datos.normalizados,
 
 
 # COMPLETAR
-
-
+distancias <- distancias_a_centroides(mis.datos.numericos.normalizados, modelo$cluster, modelo$centers)
+distancias
+top.outlier.iris <- order(distancias, decreasing = TRUE)[0:numero.de.outliers]
+top.outlier.iris
 
